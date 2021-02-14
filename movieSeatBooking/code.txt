@@ -1,0 +1,68 @@
+const seatContainer= document.querySelector(".seat-container");
+const count= document.getElementById("count");
+const total= document.getElementById("total");
+const ticketPrice= document.querySelector("select");
+const seats= document.querySelectorAll(".seat-container .seat");
+
+//updating selected seats and displaying in the browser
+ populateUI();
+
+
+
+
+function updateSeatsCount(){
+     const selectedSeat= document.querySelectorAll(".row .seat.selected");
+     const numberOfSeats= selectedSeat.length;
+     count.innerText=numberOfSeats;
+     total.innerText=numberOfSeats*ticketPrice.value;
+     const indexSeatArray=[];
+    [...selectedSeat].forEach(function(seat){
+         indexSeatArray.push([...seats].indexOf(seat));
+    });
+     
+    localStorage.setItem("selectedSeatsIndex",JSON.stringify(indexSeatArray));
+    
+}
+//save selected movie index and price
+  function movieIndexAndPrice(select){
+      const MovieIndx= select.selectedIndex;
+      const tcktPrice=select.value;
+      
+      localStorage.setItem("selectedMovieIndex",MovieIndx);
+      localStorage.setItem("moviePrice",tcktPrice);
+  }
+
+//adding event listener to select element;
+ ticketPrice.addEventListener("change",function(e){
+        updateSeatsCount();
+        movieIndexAndPrice(e.target);
+ });
+
+//populate UI
+ function populateUI(){
+    const selectedSeatsIndx= JSON.parse(localStorage.getItem("selectedSeatsIndex"));
+    if(selectedSeatsIndx !==null && selectedSeatsIndx.length>0){
+        seats.forEach(function(seat,index){
+             if(selectedSeatsIndx.indexOf(index) !==-1){
+                 seat.classList.add("selected");
+             }
+        })
+    }
+
+        const movieIndex= localStorage.getItem("selectedMovieIndex");
+
+        if(movieIndex !==null){
+            ticketPrice.selectedIndex= movieIndex;
+        }
+
+}
+
+
+//adding event listener to seat-container
+seatContainer.addEventListener("click",function(e){
+     if(e.target.classList.contains("seat") && !e.target.classList.contains("occupied")){
+         e.target.classList.toggle("selected");
+     }
+     updateSeatsCount();
+    
+});

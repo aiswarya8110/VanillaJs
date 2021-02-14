@@ -1,0 +1,25 @@
+ball.x+ball.size>brick.x && //left
+                ball.x-ball.size<brick.x+brick.w && //right
+                ball.y+ball.size>brick.y &&//top
+                ball.y-ball.size<brick.y+brick.h //bottom
+
+
+
+
+
+
+                ball.x-ball.size<brick.x+brick.w// right
+                 && ball.x+ball.size>brick.x && //left
+                    ball.y+ball.size> brick.y//top
+                     && ball.y-ball.size<brick.y+brick.h//bottom
+                     ){
+                    ball.direction_y=-ball.direction_y;
+
+
+
+                     if(ball.x+ball.size>canvas.widtth){
+        ball.direction_x=-ball.direction_x;
+    }
+    else if(ball.x<0){
+         ball.direction_x=ball.speed;
+    }

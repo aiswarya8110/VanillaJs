@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(17, 17, 34);
+    color:#fff;
+    flex-direction: column;
+    font-size:18px;
+}
+
+.movie-container{
+
+    margin-bottom:10px;
+}
+
+select{
+    padding:5px 10px;
+    border:1px solid rgba(0,0,0,0.3);
+    border-radius:5px;
+ 
+    margin-left:5px;
+    background-color: rgba(0,0,0,0.3);
+    color:#fff;
+}
+
+
+.seat{
+    height:13px;
+    width:18px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(95, 92, 92);
+    margin:3px;
+
+}
+
+.row {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen{
+    height:70px;
+    width:100%;
+    background-color: #fff;
+    box-shadow:1px 1px 7px #fff;
+    margin:13px 0;
+    transform:rotateX(-40deg);
+}
+
+
+.showcase{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.showcase ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    padding:5px 10px;
+
+}
+
+.occupied{
+    background-color: #fff;
+
+}
+
+.selected{
+    background-color: rgb(33, 117, 185);
+}
+
+.showcase ul li{
+   display:flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+label{
+    margin-left:3px;
+}
+
+.seat-container .seat:not(.occupied):hover{
+    transform:scale(1.2);
+}
+
+.movie-container{
+    perspective: 1000px;
+}
+
+.seat:nth-of-type(2){
+    margin-right:18px;
+
+}
+
+.seat:nth-last-of-type(2){
+    margin-left: 18px;
+}
+#count{
+    color: rgb(33, 117, 185);
+}
+#total{
+    color: rgb(33, 117, 185);
+}
+
+@media only screen and (max-width:560px){
+ body{
+     display:flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     background-color: rgb(22, 22, 85);
+ }
+.movie-container{
+    width:40vh;
+    height:40vh;
+}
+p{
+    margin-top: 150px;
+    letter-spacing: 1px;
+}
+
+select{
+    margin-top:10px;
+}
+
+}
